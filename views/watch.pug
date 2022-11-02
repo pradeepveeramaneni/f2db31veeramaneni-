@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  - let watch=[{watch_brand:"Rolex",watch_cost:250,watch_color:"Black"},{watch_brand:"Omega",watch_cost:200,watch_color:"Brown"},{watch_brand:"Bell & Ross",watch_cost:150,watch_color:"Gold"}]
+  div(class="container-fluid")
+  div(class="row")
+   each w,index in watch
+    div(class="col-sm-2" onclick =`buy(${index})`) #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
+   script.
+    function buy(i)
+    {
+      alert(`You purchased Item ${i+1}`)
+    } 

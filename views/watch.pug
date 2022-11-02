@@ -5,10 +5,6 @@ block content
   - let watch=[{watch_brand:"Fasttrack",watch_color:"Black",watch_cost:350},{watch_brand:"Apple",watch_color:"Brown",watch_cost:250},{watch_brand:"Rolex",watch_color:"blue",watch_cost:120}]
   div(class="container-fluid")
   div(class="row")
-   each w,index in watch
-    div(class="col-sm-2" onclick =`buy(${index})`) #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
-   script.
-    function buy(i)
-    {
-      alert(`You purchased Item ${i+1}`)
-    } 
+   each w in watch
+    div(class="col-sm-2") #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
+   

@@ -6,4 +6,4 @@ hosted at<https://f2wb31veeramaneni.onrender.com/>
 ### Watch details :
     * watch_brand - String
     * watch_color - String
-    * watch_cost  - int
+    * watch_cost  - number

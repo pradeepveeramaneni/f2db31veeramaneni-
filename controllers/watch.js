@@ -111,6 +111,7 @@ exports.watch_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
+
     // {"watch_brand":"casio", "watch_cost":150, "watch_color":"blue"} 
     document.watch_brand = req.body.watch_brand; 
     document.watch_cost = req.body.watch_cost; 

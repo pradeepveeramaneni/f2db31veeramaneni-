@@ -1,0 +1,23 @@
+extends layout
+block content
+ h1= title
+ if (toShow==null)
+    h2 no instance to Detail
+ else
+  - let watchid = toShow._id
+  - let watch_brand = toShow.watch_brand
+  - let watch_cost = toShow.watch_cost
+  - let watch_color = toShow.watch_color
+  div
+   div.row
+    div(class='watchAttr mr-3') watch ID is:
+    div #{watchid}
+   div.row
+    div(class='watchAttr mr-3') watch Brand is:
+    div #{watch_brand}
+   div.row
+    div(class='watchAttr mr-3') watch Cost is:
+    div #{watch_cost}
+   div.row
+    div(class='watchAttr mr-3') watch Color is:
+    div #{watch_color}

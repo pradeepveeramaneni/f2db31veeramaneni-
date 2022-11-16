@@ -1,0 +1,52 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let watchid = toShow._id 
+    - let watch_brand = toShow.watch_brand
+    - let watch_cost = toShow.watch_cost
+    - let watch_color = toShow.watch_color
+    - let actionid = "/resource/watchs/" + watchid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row
+       div(class='watchAttr mr-3') Watch ID is:
+       div #{watchid}
+      div.row
+       div(class='watchAttr mr-3') Watch Brand is:
+       div #{watch_brand}
+      div.row
+       div(class='watchAttr mr-3') Watch Cost is:
+       div #{watch_cost}
+      div.row
+       div(class='watchAttr mr-3') Watch Color is:
+       div #{watch_color}
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the watch collection 
+      window.location.href='/watch' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'     
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/watchs' 
+        // TODO handle body 
+      }).catch((error) => { 
+        console.log(error);
+        alert("Delete failed " + error ) 
+      }); 
+    } 

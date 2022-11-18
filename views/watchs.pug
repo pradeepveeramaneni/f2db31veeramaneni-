@@ -4,12 +4,13 @@ block content
   h1= title
   - let watch = results
   div(class="container-fluid")
-  div(class="row")
-   each w,index in watch
-    div(class="col-sm-2" onclick =`buy(${index})`) #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
-   script.
-    function buy(i)
-    {
-      alert(`You purchased Item ${i+1}`)
+  div(class="row m-1")
+    each w,index in watch
+      - let destination = `dispatch(\"/watchs/update?id=${w._id}\")` 
+       div(class="row-sm-2", class="m-1") #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update 
+  script. 
+    function dispatch(path){ 
+       window.location.href=path 
     } 
 

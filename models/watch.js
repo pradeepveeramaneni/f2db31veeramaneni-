@@ -1,8 +1,8 @@
 const mongoose = require("mongoose") 
 const watchSchema = mongoose.Schema({ 
-    watch_brand: String,     
-    watch_color: String, 
-    watch_cost: Number  
+    watch_brand: {type:String},     
+    watch_color: {type:String},
+    watch_cost: { type: Number, min: 10, max: 1000 }
 }) 
  
 module.exports = mongoose.model("watch", watchSchema)

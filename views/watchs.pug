@@ -2,15 +2,27 @@ extends layout
 
 block content
   h1= title
+  
   - let watch = results
-  div(class="container-fluid")
-  div(class="row m-1")
-    each w,index in watch
-      - let destination = `dispatch(\"/watchs/update?id=${w._id}\")` 
-       div(class="row-sm-2", class="m-1") #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update 
-  script. 
-    function dispatch(path){ 
+  - let create = `dispatch(\"/watchs/create\")`
+  button.btn( class="btn-info ml-1", onclick= create) Create
+  div(class="container-fluid mt-3")
+   div(class="row m-1")
+     each w,index in watch
+        - let destination = `dispatch(\"/watchs/update?id=${w._id}\")` 
+        - let detail = `dispatch(\"/watchs/detail?id=${w._id}\")` 
+        - let deleteItem = `dispatch(\"/watchs/delete?id=${w._id}\")` 
+        div(class="row-sm-2", class="m-1") #{w.watch_brand}, #{w.watch_cost}, #{w.watch_color}
+          
+          p
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+          p
+          button.btn( class="btn-primary ml-1", onclick= detail) Detail
+          p 
+          button.btn( class="btn-primary ml-1", onclick= deleteItem) Delete 
+
+   script. 
+      function dispatch(path){ 
        window.location.href=path 
-    } 
+      } 
 
